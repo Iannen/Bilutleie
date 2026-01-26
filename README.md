@@ -1,4 +1,4 @@
-# DBAdmin
+# Bilutleie
 
 ## Background
 
@@ -8,7 +8,7 @@ This project was a preproject to [an ungraded obligatory assignment](https://git
 
 **Prerequisites:** Java 17 installed
 
-1. Download edel.jar from following page: 
+1. Download bilutleie.jar from following page: 
    [Bilutleie(latest)](https://github.com/Iannen/Bilutleie/releases/tag/latest)
    (feel free to DL source code or clone repo if you want to take a look)
 
