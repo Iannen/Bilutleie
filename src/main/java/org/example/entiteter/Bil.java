@@ -6,7 +6,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(schema = "dat109oblig2iterativt",name = "bil")
+//@Table(schema = "dat109oblig2iterativt",name = "bil")
+@Table(name = "bil")
 public class Bil extends Entitet {
     @ManyToOne
     @JoinColumn(name = "lokasjon_id")

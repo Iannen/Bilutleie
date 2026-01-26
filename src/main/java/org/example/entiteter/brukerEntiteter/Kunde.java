@@ -7,7 +7,8 @@ import jakarta.persistence.Table;
 import org.example.entiteter.Bilutleiefirma;
 
 @Entity
-@Table(schema = "dat109oblig2iterativt",name = "kunde")
+//@Table(schema = "dat109oblig2iterativt",name = "kunde")
+@Table(name = "kunde")
 public class Kunde extends Bruker {
     @ManyToOne
     @JoinColumn(name = "bilutleiefirma_id")

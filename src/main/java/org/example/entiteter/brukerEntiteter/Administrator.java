@@ -7,7 +7,8 @@ import jakarta.persistence.Table;
 import org.example.entiteter.Bilutleiefirma;
 
 @Entity
-@Table(schema = "dat109oblig2iterativt",name = "admin")
+//@Table(schema = "dat109oblig2iterativt",name = "admin")
+@Table(name = "admin")
 public class Administrator extends Bruker {
 
     @ManyToOne

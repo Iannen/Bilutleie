@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(schema = "dat109oblig2iterativt",name = "bilutleiefirma")
+//@Table(schema = "dat109oblig2iterativt",name = "bilutleiefirma")
+@Table(name = "bilutleiefirma")
 public class Bilutleiefirma extends Entitet {
     @OneToMany(mappedBy = "bilutleiefirma", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private final List<Kunde> kunder = new ArrayList<>();

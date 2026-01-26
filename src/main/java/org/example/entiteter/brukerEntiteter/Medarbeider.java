@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import org.example.entiteter.Lokasjon;
 
 @Entity
-@Table(schema = "dat109oblig2iterativt",name = "medarbeider")
+//@Table(schema = "dat109oblig2iterativt",name = "medarbeider")
+@Table(name = "medarbeider")
 public class Medarbeider extends Bruker {
 
     @ManyToOne

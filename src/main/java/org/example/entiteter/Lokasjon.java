@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(schema = "dat109oblig2iterativt",name = "lokasjon")
+//@Table(schema = "dat109oblig2iterativt",name = "lokasjon")
+@Table(name = "lokasjon")
 public class Lokasjon extends Entitet {
     private String adresse;
     private String telefonnummer;
