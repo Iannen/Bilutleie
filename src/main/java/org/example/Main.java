@@ -4,6 +4,7 @@ package org.example;
 import org.example.entiteter.Bilutleiefirma;
 import org.example.entiteter.Lokasjon;
 import org.example.entiteter.brukerEntiteter.Administrator;
+import org.example.entiteter.brukerEntiteter.Kunde;
 import org.example.entiteter.brukerEntiteter.Medarbeider;
 import org.example.repositories.BilutleiefirmaRepo;
 import org.example.service.DatabaseService;
@@ -29,21 +30,22 @@ public class Main {
 
     private static Bilutleiefirma populate(ConfigurableApplicationContext context){
         Bilutleiefirma bilutleiefirma = new Bilutleiefirma();
-        Administrator defaultAdmin = new Administrator("Admin","pass","Karl Roger");
-        defaultAdmin.setBilutleiefirma(bilutleiefirma);
-        bilutleiefirma.getAdministratorer().add(defaultAdmin);
+        Administrator admin = new Administrator("lhs","pass","Lars Henrik Solberg");
+        admin.setBilutleiefirma(bilutleiefirma);
+        bilutleiefirma.getAdministratorer().add(admin);
 
         Lokasjon lokasjon = new Lokasjon("Laksbakkveien 8", "55555555");
         lokasjon.setBilutleiefirma(bilutleiefirma);
         bilutleiefirma.getLokasjoner().add(lokasjon);
 
-        Medarbeider tim = new Medarbeider("Timmuser", "pass", "Timmy Teigen");
-        tim.setLokasjon(lokasjon);
-        lokasjon.getMedarbeidere().add(tim);
-        
-        
+        Medarbeider mb = new Medarbeider("imn", "pass", "Ingrid Marie Nilsen");
+        mb.setLokasjon(lokasjon);
+        lokasjon.getMedarbeidere().add(mb);
 
-
+        Kunde kunde = new Kunde("sofie@email.com", "pass", "Sofie Andersen");
+        kunde.setBilutleiefirma(bilutleiefirma);
+        bilutleiefirma.getKunder().add(kunde);
+        
         BilutleiefirmaRepo firmaRepo = context.getBean(BilutleiefirmaRepo.class);
         firmaRepo.save(bilutleiefirma);
         return bilutleiefirma;

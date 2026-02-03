@@ -20,6 +20,9 @@ This project was a preproject to [an ungraded obligatory assignment](https://git
 java -jar bilutleie.jar
 ```
 
-
+5. Log in as either
+   - Administrator 'Lars Henrik Solberg' (lhs / pass)
+   - Medarbeider 'Ingrid Marie Nilsen' (imn / pass)
+   - Kunde 'Sofie Andersen' = (sofie@email.com / pass)
 
 (For bookkeeping purposes, Previous repo -> https://github.com/h671420/Oblig2jpaiterativt)
