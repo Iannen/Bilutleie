@@ -25,4 +25,6 @@ java -jar bilutleie.jar
    - Medarbeider 'Ingrid Marie Nilsen' (imn / pass)
    - Kunde 'Sofie Andersen' = (sofie@email.com / pass)
 
+The app isn't very functional other than offering a login for the users.
+
 (For bookkeeping purposes, Previous repo -> https://github.com/h671420/Oblig2jpaiterativt)
