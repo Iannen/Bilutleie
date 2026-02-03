@@ -10,14 +10,15 @@ import org.example.entiteter.Bilutleiefirma;
 //@Table(schema = "dat109oblig2iterativt",name = "kunde")
 @Table(name = "kunde")
 public class Kunde extends Bruker {
-    @ManyToOne
-    @JoinColumn(name = "bilutleiefirma_id")
-    private Bilutleiefirma bilutleiefirma;
 
     public Kunde(String brukernavn, String passord, String navn) {
         super(brukernavn,passord,navn);
     }
     public Kunde(){}
+
+    @ManyToOne
+    @JoinColumn(name = "bilutleiefirma_id")
+    private Bilutleiefirma bilutleiefirma;
 
     public Bilutleiefirma getBilutleiefirma() {
         return bilutleiefirma;

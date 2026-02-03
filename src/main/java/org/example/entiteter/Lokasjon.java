@@ -1,7 +1,6 @@
 package org.example.entiteter;
 
 import jakarta.persistence.*;
-import org.example.entiteter.brukerEntiteter.Kunde;
 import org.example.entiteter.brukerEntiteter.Medarbeider;
 
 import java.util.ArrayList;
@@ -41,5 +40,10 @@ public class Lokasjon extends Entitet {
 
     public List<Bil> getBiler() {
         return biler;
+    }
+
+    @Override
+    public String toString(){
+        return this.getId() + " " + this.telefonnummer + this.adresse;
     }
 }

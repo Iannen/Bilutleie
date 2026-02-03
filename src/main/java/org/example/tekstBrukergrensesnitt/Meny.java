@@ -2,7 +2,9 @@ package org.example.tekstBrukergrensesnitt;
 
 
 import org.example.entiteter.Entitet;
+import org.example.entiteter.brukerEntiteter.Bruker;
 
+import java.io.IOException;
 import java.util.*;
 
 public class Meny <T extends Entitet>  {
@@ -14,29 +16,15 @@ public class Meny <T extends Entitet>  {
     public Meny(String headerMsg){
         this.headerMsg=headerMsg;
     }
-//    public void run() {
-//        boolean running = true;
-//        while (running){
-//            System.out.println("**************************\n"+headerMsg);
-//            for (Map.Entry<String, MenyValg> entry : valg.entrySet()) {
-//                String id=entry.getKey();
-//                MenyValg valg=entry.getValue();
-//                System.out.println("\t"+id+". "+valg.getInfoTekst());
-//            }
-//            System.out.println("Returner '0' for å avslutte");
-//            String input = scanner.nextLine();
-//            if (valg.containsKey(input))
-//                valg.get(input).execute();
-//            else if (input.equals("0"))
-//                running=false;
-//            else
-//                System.out.println(input+" er ikke et gyldig valg");
-//        }
-//    }
+
     public void run(T menyobjekt) {
         this.menyobjekt=menyobjekt;
         boolean running = true;
         while (running){
+            clearConsole();
+            if (menyobjekt instanceof Bruker bruker) {
+                System.out.println("Velkommen: " + bruker.getNavn());
+            }
             System.out.println("**************************\n"+headerMsg);
             for (Map.Entry<String, MenyValg> entry : valg.entrySet()) {
                 String id=entry.getKey();
@@ -62,5 +50,17 @@ public class Meny <T extends Entitet>  {
 
     public T getMenyobjekt() {
         return menyobjekt;
+    }
+
+    static void clearConsole() {
+        try {
+            if (System.getProperty("os.name").contains("Windows"))
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            else
+                Runtime.getRuntime().exec("clear");
+        } catch (IOException | InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        System.out.println("\n");
     }
 }

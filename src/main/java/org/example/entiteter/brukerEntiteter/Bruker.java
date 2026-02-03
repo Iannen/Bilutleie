@@ -1,6 +1,7 @@
 package org.example.entiteter.brukerEntiteter;
 
 import jakarta.persistence.MappedSuperclass;
+
 import org.example.entiteter.Entitet;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 

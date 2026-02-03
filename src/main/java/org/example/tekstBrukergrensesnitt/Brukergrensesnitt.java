@@ -1,5 +1,7 @@
 package org.example.tekstBrukergrensesnitt;
 
+import java.util.List;
+
 import org.example.entiteter.Bil;
 import org.example.entiteter.Bilutleiefirma;
 import org.example.entiteter.Lokasjon;
@@ -29,7 +31,7 @@ public class Brukergrensesnitt {
                     String plaintekstPass = Prosedyrer.beOmPassord();
                     Administrator admin = databaseService.login(Administrator.class, brukernavn, plaintekstPass);
                     if (admin == null)
-                        System.out.println("Pålogging mislykkes");
+                        Prosedyrer.reject("Pålogging mislykkes");
                     else
                         adminMeny.run(admin);
                 })
@@ -38,7 +40,7 @@ public class Brukergrensesnitt {
                     String plaintekstPass = Prosedyrer.beOmPassord();
                     Medarbeider medarbeider = databaseService.login(Medarbeider.class, brukernavn, plaintekstPass);
                     if (medarbeider == null)
-                        System.out.println("Pålogging mislykkes");
+                        Prosedyrer.reject("Pålogging mislykkes");
                     else
                         medarbeiderMeny.run(medarbeider);
                 })
@@ -47,7 +49,7 @@ public class Brukergrensesnitt {
                     String plaintekstPass = Prosedyrer.beOmPassord();
                     Kunde kunde = databaseService.login(Kunde.class, brukernavn, plaintekstPass);
                     if (kunde == null)
-                        System.out.println("Pålogging mislykkes");
+                        Prosedyrer.reject("Pålogging mislykkes");
                     else
                         kundeMeny.run(kunde);
                 })
@@ -62,7 +64,13 @@ public class Brukergrensesnitt {
         //Gi adminmeny logikk
         adminMeny
                 .addValg("1", "Registrer en ny medarbeider på en lokasjon", () -> {
-                    Lokasjon lokasjon = Prosedyrer.velgEntity(databaseService.hentEntiteter(Lokasjon.class));
+                    List<Lokasjon>  lokasjoner = databaseService.hentEntiteter(Lokasjon.class);
+                    if (lokasjoner.isEmpty()){
+                        Prosedyrer.reject("Det finnes ingen lokasjoner. Opprett en lokasjon først");
+                        return;
+                    }
+                    //Lokasjon lokasjon = Prosedyrer.velgEntity(databaseService.hentEntiteter(Lokasjon.class));
+                    Lokasjon lokasjon = Prosedyrer.velgEntity(lokasjoner);
                     if (lokasjon!=null){
                         Medarbeider medarbeider =Prosedyrer.skapMedarbeider();
                         if (medarbeider != null)

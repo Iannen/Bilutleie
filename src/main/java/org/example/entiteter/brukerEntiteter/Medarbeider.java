@@ -8,15 +8,15 @@ import org.example.entiteter.Lokasjon;
 @Table(name = "medarbeider")
 public class Medarbeider extends Bruker {
 
-    @ManyToOne
-    @JoinColumn(name = "lokasjon_id")
-    private Lokasjon lokasjon;
-
     public Medarbeider(String brukernavn, String passord, String navn) {
         super(brukernavn,passord,navn);
     }
 
     public Medarbeider() {}
+
+    @ManyToOne
+    @JoinColumn(name = "lokasjon_id")
+    private Lokasjon lokasjon;
 
     public Lokasjon getLokasjon() {
         return lokasjon;

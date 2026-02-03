@@ -20,7 +20,7 @@ public class DatabaseService {
     private final LokasjonRepo lokasjonRepo;
     private final MedarbeiderRepo medarbeiderRepo;
     private final BilRepo bilrepo;
-    private final Bilutleiefirma bilutleiefirma;
+    private Bilutleiefirma bilutleiefirma;
 
     @Autowired
     public DatabaseService(BilutleiefirmaRepo bilutleiefirmaRepo, AdministratorRepo administratorRepo, KundeRepo kundeRepo, LokasjonRepo lokasjonRepo, MedarbeiderRepo medarbeiderRepo, BilRepo bilrepo){
@@ -30,15 +30,7 @@ public class DatabaseService {
         this.lokasjonRepo=lokasjonRepo;
         this.medarbeiderRepo=medarbeiderRepo;
         this.bilrepo = bilrepo;
-        this.bilutleiefirma = bilutleiefirmaRepo.findById((long)1).orElseGet(()->{
-            Bilutleiefirma bilutleiefirma = new Bilutleiefirma();
-            Administrator defaultAdmin = new Administrator("Admin","pass","Karl Roger");
-            defaultAdmin.setBilutleiefirma(bilutleiefirma);
-            bilutleiefirma.getAdministratorer().add(defaultAdmin);
-            bilutleiefirmaRepo.save(bilutleiefirma);
-            return bilutleiefirma;
-        });
-
+        this.bilutleiefirma = null;
     }
     public void addAdministrator(Administrator administrator){
         bilutleiefirma.getAdministratorer().add(administrator);
@@ -118,5 +110,9 @@ public class DatabaseService {
     }
     public Bilutleiefirma getBilutleiefirma(){
         return this.bilutleiefirma;
+    }
+
+    public void setBilutleiefirma(Bilutleiefirma firma){
+        this.bilutleiefirma = firma;
     }
 }

@@ -70,10 +70,15 @@ public class Prosedyrer {
         return new Bil();
     }
 
+    public static void reject(String rejectmsg) {
+        System.out.println(rejectmsg);
+        scanner.nextLine();
+    }
+
     public static <T extends Entitet> T velgEntity(List<T> entiteter) {
         System.out.println("Vennligst velg ut en av følgende");
         for (T entity:entiteter)
-            System.out.println("\t"+entity.getId());
+            System.out.println("\t"+entity.toString());
         String input = scanner.nextLine();
         long id;
         try {
